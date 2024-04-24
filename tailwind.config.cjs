@@ -32,6 +32,7 @@ module.exports = {
         'Noto Color Emoji',
       ],
       mono: [
+        'Cascadia Code',
         'Söhne Mono',
         'Monaco',
         'Andale Mono',

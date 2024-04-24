@@ -18,22 +18,33 @@ Carefully heed the user's instructions.
 Respond using Markdown.`;
 
 export const modelOptions: ModelOptions[] = [
-  'gpt-3.5-turbo',
-  'gpt-3.5-turbo-16k',
-  'gpt-3.5-turbo-1106',
-  'gpt-3.5-turbo-0125',
-  'gpt-4',
-  'gpt-4-32k',
-  'gpt-4-1106-preview',
-  'gpt-4-0125-preview'
-  // 'gpt-3.5-turbo-0301',
-  // 'gpt-4-0314',
-  // 'gpt-4-32k-0314',
+  'GPT-3.5-Turbo',
+  'GPT-4',
+  'GPT-4-32k',
+  'GPT-4-128k',
+  'Claude-3-Opus',
+  'Claude-3-Sonnet',
+  'ChatGPT-16k',
+  'Mistral-Large',
+  'Gemini-Pro',
+  'Llama-2-70b-Groq',
+  'Mixtral-8x7b-Groq',
 ];
 
-export const defaultModel = 'gpt-3.5-turbo';
+export const defaultModel = 'GPT-4';
 
 export const modelMaxToken = {
+  'GPT-4': 4096,
+  'GPT-4-32k': 32768,
+  'GPT-4-128k': 131072,
+  'Claude-3-Opus': 4096,
+  'Claude-3-Sonnet': 4096,
+  'GPT-3.5-Turbo': 4096,
+  'ChatGPT-16k': 16384,
+  'Mistral-Large': 32768,
+  'Gemini-Pro': 32768,
+  'Llama-2-70b-Groq': 4096,
+  'Mixtral-8x7b-Groq': 32768,
   'gpt-3.5-turbo': 4096,
   'gpt-3.5-turbo-0301': 4096,
   'gpt-3.5-turbo-0613': 4096,
@@ -52,6 +63,50 @@ export const modelMaxToken = {
 };
 
 export const modelCost = {
+  'GPT-3.5-Turbo': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'GPT-4': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'GPT-4-32k': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'GPT-4-128k': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Claude-3-Opus': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Claude-3-Sonnet': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'ChatGPT-16k': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Mistral-Large': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Gemini-Pro': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Llama-2-70b-Groq': {
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
+  'Mixtral-8x7b-Groq':{
+    prompt: { price: 0.000, unit: 1000 },
+    completion: { price: 0.000, unit: 1000 },
+  },
   'gpt-3.5-turbo': {
     prompt: { price: 0.0015, unit: 1000 },
     completion: { price: 0.002, unit: 1000 },

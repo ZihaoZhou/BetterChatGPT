@@ -6,6 +6,7 @@ import { getChatCompletion, getChatCompletionStream } from '@api/api';
 import { parseEventSource } from '@api/helper';
 import { limitMessageTokens, updateTotalTokenUsed } from '@utils/messageUtils';
 import { _defaultChatConfig } from '@constants/chat';
+import { ConfigInterface } from '@type/chat';
 import { officialAPIEndpoint } from '@constants/auth';
 
 const useSubmit = () => {
@@ -37,11 +38,15 @@ const useSubmit = () => {
           _defaultChatConfig
         );
       } else if (apiKey) {
+        const customChatConfig: ConfigInterface = {
+          ..._defaultChatConfig,
+          model: "GPT-3.5-Turbo",
+        };
         // own apikey
         data = await getChatCompletion(
           useStore.getState().apiEndpoint,
           message,
-          _defaultChatConfig,
+          customChatConfig,
           apiKey
         );
       }
@@ -173,7 +178,7 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: 'user',
-          content: `Generate a title in less than 6 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n"""`,
+          content: `Generate a title in 2 words or 3 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nRemember to use fewer than or equal to 3 words."""`,
         };
 
         let title = (await generateTitle([message])).trim();
