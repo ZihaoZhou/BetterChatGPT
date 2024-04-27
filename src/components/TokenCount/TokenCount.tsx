@@ -22,8 +22,8 @@ const TokenCount = React.memo(() => {
 
   const cost = useMemo(() => {
     const price =
-      modelCost[model].prompt.price *
-      (tokenCount / modelCost[model].prompt.unit);
+      (modelCost.get(model) ?? { prompt: { price: 0.03, unit: 1000 }, completion: { price: 0.06, unit: 1000 } }).prompt.price *
+      (tokenCount / (modelCost.get(model) ?? { prompt: { price: 0.03, unit: 1000 }, completion: { price: 0.06, unit: 1000 } }).prompt.price);
     return price.toPrecision(3);
   }, [model, tokenCount]);
 

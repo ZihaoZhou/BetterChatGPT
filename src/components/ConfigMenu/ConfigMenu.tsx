@@ -152,7 +152,7 @@ export const MaxTokenSlider = ({
           _setMaxToken(Number(e.target.value));
         }}
         min={0}
-        max={modelMaxToken[_model]}
+        max={modelMaxToken.get(_model) ?? 32768}
         step={1}
         className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer'
       />

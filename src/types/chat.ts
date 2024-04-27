@@ -61,9 +61,12 @@ export type ModelOptions =
   | 'Claude-3-Sonnet'
   | 'ChatGPT-16k'
   | 'Mistral-Large'
+  | 'Gemini-1.5-Pro'
   | "Gemini-Pro"
+  | "Solar-Mini"
   | 'Llama-2-70b-Groq'
   | 'Mixtral-8x7b-Groq'
+  | 'Llama-3-70b-Groq'
   | 'GPT-3.5-Turbo'
   | 'gpt-3.5-turbo'
   | 'gpt-3.5-turbo-16k'
