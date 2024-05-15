@@ -32,6 +32,7 @@ export const modelOptions: ModelOptions[] = [
   'Llama-2-70b-Groq',
   'Llama-3-70b-Groq',
   'Mixtral-8x7b-Groq',
+  'LLaMA-2-7b-32k'
 ];
 
 export const defaultModel = 'Claude-3-Sonnet';
