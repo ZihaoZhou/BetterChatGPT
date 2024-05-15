@@ -9,6 +9,20 @@ import { _defaultChatConfig } from '@constants/chat';
 import { ConfigInterface } from '@type/chat';
 import { officialAPIEndpoint } from '@constants/auth';
 
+function truncateMessages(messages: MessageInterface[], maxCharacters: number): MessageInterface[] {
+  let totalCharacters = 0;
+  return messages.map(message => {
+    const remainingCharacters = maxCharacters - totalCharacters;
+    if (remainingCharacters <= 0) {
+      return { ...message, content: "" };  // No space left, truncate content entirely
+    }
+
+    const truncatedContent = message.content.slice(0, remainingCharacters);
+    totalCharacters += truncatedContent.length;
+    return { ...message, content: truncatedContent };
+  });
+}
+
 const useSubmit = () => {
   const { t, i18n } = useTranslation('api');
   const error = useStore((state) => state.error);
@@ -21,10 +35,11 @@ const useSubmit = () => {
   const setChats = useStore((state) => state.setChats);
 
   const generateTitle = async (
-    message: MessageInterface[]
+    original_message: MessageInterface[]
   ): Promise<string> => {
     let data;
     try {
+      const message = truncateMessages(original_message, 1000);
       if (!apiKey || apiKey.length === 0) {
         // official endpoint
         if (apiEndpoint === officialAPIEndpoint) {
@@ -40,7 +55,7 @@ const useSubmit = () => {
       } else if (apiKey) {
         const customChatConfig: ConfigInterface = {
           ..._defaultChatConfig,
-          model: "LLaMA-2-7b-32k",
+          model: "Gemini-Pro",
         };
         // own apikey
         data = await getChatCompletion(
@@ -53,7 +68,7 @@ const useSubmit = () => {
     } catch (error: unknown) {
       throw new Error(`Error generating title!\n${(error as Error).message}`);
     }
-    return data.choices[0].message.content;
+    return data.choices[0].message.content.replace(/^[\s#]+/, '');
   };
 
   const handleSubmit = async () => {
