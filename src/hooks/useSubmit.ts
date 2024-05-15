@@ -40,7 +40,7 @@ const useSubmit = () => {
       } else if (apiKey) {
         const customChatConfig: ConfigInterface = {
           ..._defaultChatConfig,
-          model: "GPT-3.5-Turbo",
+          model: "LLaMA-2-7b-32k",
         };
         // own apikey
         data = await getChatCompletion(
