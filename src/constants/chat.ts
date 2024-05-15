@@ -31,8 +31,7 @@ export const modelOptions: ModelOptions[] = [
   'Gemini-Pro',
   'Llama-2-70b-Groq',
   'Llama-3-70b-Groq',
-  'Mixtral-8x7b-Groq',
-  'LLaMA-2-7b-32k'
+  'Mixtral-8x7b-Groq'
 ];
 
 export const defaultModel = 'Claude-3-Sonnet';
