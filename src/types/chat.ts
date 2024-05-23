@@ -59,6 +59,8 @@ export type ModelOptions =
   | 'gpt-4-0125-preview'
   | 'Claude-3-Opus'
   | 'Claude-3-Sonnet'
+  | 'GPT-4o'
+  | 'GPT-4o-128k'
   | 'ChatGPT-16k'
   | 'Mistral-Large'
   | 'Gemini-1.5-Pro'
