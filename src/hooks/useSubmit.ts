@@ -209,7 +209,7 @@ const useSubmit = () => {
 
         // update tokens used for generating title
         if (countTotalTokens) {
-          const model = _defaultChatConfig.model;
+          const model = 'Gemini-Pro';
           updateTotalTokenUsed(model, [message], {
             role: 'assistant',
             content: title,

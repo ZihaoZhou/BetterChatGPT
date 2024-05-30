@@ -30,6 +30,8 @@ export const modelOptions: ModelOptions[] = [
   'Mistral-Large',
   'Solar-Mini',
   'Gemini-1.5-Pro',
+  'Gemini-1.5-Search',
+  'Web-Search',
   'Gemini-Pro',
   'Llama-2-70b-Groq',
   'Llama-3-70b-Groq',

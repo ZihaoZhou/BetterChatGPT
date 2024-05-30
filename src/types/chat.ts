@@ -73,7 +73,9 @@ export type ModelOptions =
   | 'gpt-3.5-turbo'
   | 'gpt-3.5-turbo-16k'
   | 'gpt-3.5-turbo-1106'
-  | 'gpt-3.5-turbo-0125';
+  | 'gpt-3.5-turbo-0125'
+  | 'Web-Search'
+  | 'Gemini-1.5-Search';
   // | 'gpt-3.5-turbo-0301';
   // | 'gpt-4-0314'
   // | 'gpt-4-32k-0314'
