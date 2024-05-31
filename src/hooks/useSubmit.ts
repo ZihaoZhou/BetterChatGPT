@@ -55,7 +55,7 @@ const useSubmit = () => {
       } else if (apiKey) {
         const customChatConfig: ConfigInterface = {
           ..._defaultChatConfig,
-          model: "Gemini-Pro",
+          model: "Claude-3-Haiku",
         };
         // own apikey
         data = await getChatCompletion(
@@ -193,7 +193,7 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: 'user',
-          content: `Generate a title in 2 words or 3 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
+          content: `Generate a title in 2 words or 3 words for the following message:\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
         };
 
         let title = (await generateTitle([message])).trim();
@@ -209,7 +209,7 @@ const useSubmit = () => {
 
         // update tokens used for generating title
         if (countTotalTokens) {
-          const model = 'Gemini-Pro';
+          const model = 'Claude-3-Haiku';
           updateTotalTokenUsed(model, [message], {
             role: 'assistant',
             content: title,
