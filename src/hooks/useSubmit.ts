@@ -193,7 +193,7 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: 'user',
-          content: `Generate a title in 2 words or 3 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nRemember to use fewer than or equal to 3 words."""`,
+          content: `Generate a title in 2 words or 3 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
         };
 
         let title = (await generateTitle([message])).trim();

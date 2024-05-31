@@ -59,6 +59,7 @@ export type ModelOptions =
   | 'gpt-4-0125-preview'
   | 'Claude-3-Opus'
   | 'Claude-3-Sonnet'
+  | 'Claude-3-Haiku'
   | 'GPT-4o'
   | 'GPT-4o-128k'
   | 'ChatGPT-16k'
@@ -74,8 +75,9 @@ export type ModelOptions =
   | 'gpt-3.5-turbo-16k'
   | 'gpt-3.5-turbo-1106'
   | 'gpt-3.5-turbo-0125'
-  | 'Web-Search'
-  | 'Gemini-1.5-Search';
+  | 'Gemini-1.5-Pro-Search'
+  | 'Gemini-1.5-Flash'
+  | 'Gemini-1.0-Pro-Search';
   // | 'gpt-3.5-turbo-0301';
   // | 'gpt-4-0314'
   // | 'gpt-4-32k-0314'
