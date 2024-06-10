@@ -20,7 +20,10 @@ Respond using Markdown.`;
 export const modelOptions: ModelOptions[] = [
   'GPT-3.5-Turbo',
   'ChatGPT-16k',
+  'Command-R-Plus',
   'GPT-4',
+  'GPT-4-Turbo',
+  'GPT-4-Classic',
   'GPT-4-32k',
   'GPT-4-128k',
   'GPT-4o',
