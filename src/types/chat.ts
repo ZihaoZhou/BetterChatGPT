@@ -69,6 +69,7 @@ export type ModelOptions =
   | 'GPT-4o-mini'
   | 'GPT-4o-128k'
   | 'ChatGPT-16k'
+  | 'Qwen-1.5-110B-T'
   | 'Mistral-Large'
   | 'Gemini-1.5-Pro'
   | "Gemini-Pro"

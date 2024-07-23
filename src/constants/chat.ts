@@ -34,6 +34,7 @@ export const modelOptions: ModelOptions[] = [
   'Claude-3.5-Sonnet',
   'Claude-3.5-Sonnet-200k',
   'Claude-3-Haiku',
+  'Qwen-1.5-110B-T',
   'Mistral-Large',
   'Solar-Mini',
   'Gemini-1.5-Flash',
