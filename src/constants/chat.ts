@@ -27,6 +27,7 @@ export const modelOptions: ModelOptions[] = [
   'GPT-4-32k',
   'GPT-4-128k',
   'GPT-4o',
+  'GPT-4o-mini',
   'GPT-4o-128k',
   'Claude-3-Opus',
   'Claude-3-Sonnet',

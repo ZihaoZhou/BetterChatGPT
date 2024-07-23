@@ -66,6 +66,7 @@ export type ModelOptions =
   | 'Claude-3.5-Sonnet-200k'
   | 'Claude-3-Haiku'
   | 'GPT-4o'
+  | 'GPT-4o-mini'
   | 'GPT-4o-128k'
   | 'ChatGPT-16k'
   | 'Mistral-Large'
