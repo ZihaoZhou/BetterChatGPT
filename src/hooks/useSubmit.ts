@@ -23,6 +23,38 @@ function truncateMessages(messages: MessageInterface[], maxCharacters: number): 
   });
 }
 
+function extractTitle(response: string) {
+  // Remove any surrounding quotes
+  response = response.trim().replace(/^["']|["']$/g, '');
+  console.debug(`Response after removing quotes: ${response}`);
+
+  // Check for patterns like "titles:"
+  const titlePatternMatch = response.match(/[Tt]itles?:\s*(.*)/s);
+  if (titlePatternMatch) {
+    // Split the matched pattern by new lines and filter out any empty strings
+    let titles = titlePatternMatch[1].split('\n').filter(t => t.trim() !== '');
+    // Remove leading non-number characters from the titles
+    const cleanTitles = titles.map(title => title.replace(/^[\d*-]\s*/, '').trim());
+    console.debug(`Title pattern match found. Titles extracted: ${cleanTitles}`);
+    return cleanTitles[0] || '';
+  }
+
+  // If no title pattern, but there's a colon, start from there
+  const colonIndex = response.indexOf(':');
+  if (colonIndex !== -1) {
+    const afterColon = response.slice(colonIndex + 1).trim();
+    const firstTitle = afterColon.split(/[.,\d\n]/)[0].trim();
+    console.debug(`No title pattern found, but colon detected. First title after colon: ${firstTitle}`);
+    return firstTitle || '';
+  }
+
+  // If no patterns found, return the first 3-4 words
+  const words = response.split(/\s+/);
+  const firstFewWords = words.slice(0, 4).join(' ');
+  console.debug(`No patterns found. Returning first 3-4 words: ${firstFewWords}`);
+  return firstFewWords;
+}
+
 const useSubmit = () => {
   const { t, i18n } = useTranslation('api');
   const error = useStore((state) => state.error);
@@ -193,10 +225,10 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: 'user',
-          content: `Generate a title in 2 words or 3 words for the following message:\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
+          content: `Generate a title that is no longer than 3 words for the following message:\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
         };
 
-        let title = (await generateTitle([message])).trim();
+        let title = extractTitle((await generateTitle([message])).trim());
         if (title.startsWith('"') && title.endsWith('"')) {
           title = title.slice(1, -1);
         }
