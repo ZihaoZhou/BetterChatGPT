@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import useStore from '@store/store';
+import React, { useEffect, useRef, useState, Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 import PopupModal from '@components/PopupModal';
 import { ConfigInterface, ModelOptions } from '@type/chat';
 import DownChevronArrow from '@icon/DownChevronArrow';
-import { modelMaxToken, modelOptions } from '@constants/chat';
+import { modelMaxToken, modelProviders } from '@constants/chat';
 
 const ConfigMenu = ({
   setIsModalOpen,
@@ -73,49 +72,93 @@ const ConfigMenu = ({
   );
 };
 
-export const ModelSelector = ({
-  _model,
-  _setModel,
-}: {
-  _model: ModelOptions;
-  _setModel: React.Dispatch<React.SetStateAction<ModelOptions>>;
-}) => {
-  const [dropDown, setDropDown] = useState<boolean>(false);
+// Define the providers separately for the provider dropdown
+const providers = Object.keys(modelProviders);
+
+interface ModelSelectorProps {
+  _model: ModelOptions; // Assuming the model is a string type
+  _setModel: Dispatch<SetStateAction<ModelOptions>>;
+}
+
+export const ModelSelector: React.FC<ModelSelectorProps> = ({ _model, _setModel }) => {
+  const [provider, setProvider] = useState(providers[0]);
+  const [model, setModel] = useState(_model);
+  const [dropDownModel, setDropDownModel] = useState(false);
+  const [dropDownProvider, setDropDownProvider] = useState(false);
+
+  // Whenever the local state model changes, update the external state
+  const handleModelChange = (newModel: ModelOptions) => {
+    setModel(newModel);
+    _setModel(newModel);
+    setDropDownModel(false); // Close the dropdown
+    setDropDownProvider(false);
+  };
 
   return (
-    <div className='mb-4' style={{ marginBottom: 0 }}>
-      <button
-        className='btn btn-neutral btn-small flex gap-1'
-        type='button'
-        onClick={() => setDropDown((prev) => !prev)}
-        aria-label='model'
-      >
-        {_model}
-        <DownChevronArrow />
-      </button>
-      <div
-        id='dropdown'
-        className={`${
-          dropDown ? '' : 'hidden'
-        } absolute top-100 bottom-100 z-10 bg-white rounded-lg shadow-xl border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group dark:bg-gray-800 opacity-90`}
-      >
-        <ul
-          className='text-sm text-gray-700 dark:text-gray-200 p-0 m-0'
-          aria-labelledby='dropdownDefaultButton'
+    <div className='flex gap-4'> 
+      {/* Provider Selector */}
+      <div>
+        <button
+          className='btn btn-neutral btn-small flex gap-1'
+          type='button'
+          onClick={() => setDropDownProvider(prev => !prev)}
+          aria-label='provider'
         >
-          {modelOptions.map((m) => (
-            <li
-              className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer'
-              onClick={() => {
-                _setModel(m);
-                setDropDown(false);
-              }}
-              key={m}
-            >
-              {m}
-            </li>
-          ))}
-        </ul>
+          {provider} 
+          <DownChevronArrow />
+        </button>
+        <div
+          id='dropdown'
+          className={`${dropDownProvider ? '' : 'hidden'} absolute top-100 bottom-100 z-10 bg-white rounded-lg shadow-xl border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group dark:bg-gray-800 opacity-90`}
+        >
+          <ul
+            className='text-sm text-gray-700 dark:text-gray-200 p-0 m-0'
+            aria-labelledby='dropdownDefaultButton'
+          >
+            {providers.map(p => (
+              <li
+                className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer'
+                onClick={() => {
+                  setProvider(p);
+                  handleModelChange(modelProviders[p][0]); // Reset model to first in provider
+                  setDropDownProvider(false);
+                }}
+                key={p}
+              >
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      {/* Model Selector */}
+      <div>
+        <button
+          className='btn btn-neutral btn-small flex gap-1'
+          onClick={() => setDropDownModel(prev => !prev)}
+          aria-label='Select model'
+        >
+          {model} <DownChevronArrow />
+        </button>
+        <div
+          className={`${dropDownModel ? '' : 'hidden'} absolute top-100 bottom-100 z-10 bg-white rounded-lg shadow-xl border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group dark:bg-gray-800 opacity-90`}
+        >
+          <ul
+            className='text-sm text-gray-700 dark:text-gray-200 p-0 m-0'
+            aria-labelledby='dropdownDefaultButton'
+          >
+            {modelProviders[provider].map(m => (
+              <li
+                className='px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer'
+                onClick={() => handleModelChange(m)}
+                key={m}
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

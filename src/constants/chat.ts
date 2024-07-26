@@ -17,37 +17,71 @@ export const _defaultSystemMessage =
 Carefully heed the user's instructions. 
 Respond using Markdown.`;
 
-export const modelOptions: ModelOptions[] = [
-  'GPT-3.5-Turbo',
-  'ChatGPT-16k',
-  'Command-R-Plus',
-  'GPT-4',
-  'GPT-4-Turbo',
-  'GPT-4-Classic',
-  'GPT-4-32k',
-  'GPT-4-128k',
-  'GPT-4o',
-  'GPT-4o-mini',
-  'GPT-4o-128k',
-  'Claude-3-Opus',
-  'Claude-3-Sonnet',
-  'Claude-3.5-Sonnet',
-  'Claude-3.5-Sonnet-200k',
-  'Claude-3-Haiku',
-  'Qwen-1.5-110B-T',
-  'Mistral-Large',
-  'Solar-Mini',
-  'Gemini-1.5-Flash',
-  'Gemini-1.5-Pro',
-  'Gemini-1.5-Pro-Search',
-  'Gemini-1.0-Pro-Search',
-  'Gemini-Pro',
-  'Llama-2-70b-Groq',
-  'Llama-3-70b-Groq',
-  'Mixtral-8x7b-Groq'
-];
+// Define the model options with their corresponding providers
+export const modelProviders: { [key: string]: ModelOptions[] } = {
+  'OpenAI': [
+    'GPT-4',
+    'GPT-4-Turbo',
+    'GPT-4-Classic',
+    'GPT-4-32k',
+    'GPT-4-128k',
+    'GPT-4o',
+    'GPT-4o-mini',
+    'GPT-4o-128k',
+    'GPT-3.5-Turbo',
+    'ChatGPT-16k'
+  ],
+  'Anthropic': [
+    'Claude-instant',
+    'Claude-3-Opus',
+    'Claude-3-Sonnet',
+    'Claude-3.5-Sonnet',
+    'Claude-3.5-Sonnet-200k',
+    'Claude-3-Haiku'
+  ],
+  'Alibaba': [
+    'Qwen-72B-T',
+    'Qwen2-72B-Chat',
+    'Qwen2-72B-Instruct-T',
+    'Qwen-1.5-110B-T'
+  ],
+  'Mistral': [
+    'Mistral-Medium',
+    'Mistral-Large',
+    'Mistral-Large-2',
+    'Mixtral-8x7b-Chat',
+    'Mixtral-8x7b-Groq',
+    'Mixtral-8x22b-Inst-FW'
+  ],
+  'Google': [
+    'Gemini-1.5-Flash',
+    'Gemini-1.5-Flash-Search',
+    'Gemini-1.5-Pro',
+    'Gemini-1.5-Pro-Search',
+    'Gemini-1.0-Pro-Search',
+    'Gemini-1.0-Pro'
+  ],
+  'Meta': [
+    'Llama-3-70b-Groq',
+    'Llama-3-70B-T',
+    'Llama-3.1-70B-FW-128k',
+    'Llama-3-8b-Groq',
+    'Llama-3-8B-T',
+    'Llama-3.1-8B-FW-128k',
+    'Llama-3.1-405B-T',
+    'Llama-3.1-405B-FW-128k',
+    'Code-Llama-13b',
+    'Code-Llama-34b'
+  ],
+  'Others': [
+    'Solar-Mini',
+    'Command-R-Plus'
+  ]
+};
 
-export const defaultModel = 'Claude-3-Sonnet';
+export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
+
+export const defaultModel = 'GPT-4';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],

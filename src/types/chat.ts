@@ -60,6 +60,7 @@ export type ModelOptions =
   | 'GPT-4-128k'
   | 'gpt-4-1106-preview'
   | 'gpt-4-0125-preview'
+  | 'Claude-instant'
   | 'Claude-3-Opus'
   | 'Claude-3-Sonnet'
   | 'Claude-3.5-Sonnet'
@@ -69,14 +70,27 @@ export type ModelOptions =
   | 'GPT-4o-mini'
   | 'GPT-4o-128k'
   | 'ChatGPT-16k'
+  | 'Qwen-72B-T'
   | 'Qwen-1.5-110B-T'
-  | 'Mistral-Large'
-  | 'Gemini-1.5-Pro'
-  | "Gemini-Pro"
+  | 'Qwen2-72B-Chat'
+  | 'Qwen2-72B-Instruct-T'
   | "Solar-Mini"
-  | 'Llama-2-70b-Groq'
-  | 'Mixtral-8x7b-Groq'
+  | 'Code-Llama-13b'
+  | 'Code-Llama-34b'
+  | 'Llama-3-8B-T'
+  | 'Llama-3-8b-Groq'
+  | 'Llama-3.1-8B-FW-128k'
+  | 'Llama-3-70B-T'
   | 'Llama-3-70b-Groq'
+  | 'Llama-3.1-70B-FW-128k'
+  | 'Llama-3.1-405B-T'
+  | 'Llama-3.1-405B-FW-128k'
+  | 'Mistral-Medium'
+  | 'Mistral-Large'
+  | 'Mistral-Large-2'
+  | 'Mixtral-8x7b-Chat'
+  | 'Mixtral-8x7b-Groq'
+  | 'Mixtral-8x22b-Inst-FW'
   | 'GPT-3.5-Turbo'
   | 'gpt-3.5-turbo'
   | 'gpt-3.5-turbo-16k'
@@ -84,10 +98,10 @@ export type ModelOptions =
   | 'gpt-3.5-turbo-0125'
   | 'Gemini-1.5-Pro-Search'
   | 'Gemini-1.5-Flash'
-  | 'Gemini-1.0-Pro-Search';
-  // | 'gpt-3.5-turbo-0301';
-  // | 'gpt-4-0314'
-  // | 'gpt-4-32k-0314'
+  | 'Gemini-1.5-Flash-Search'
+  | 'Gemini-1.0-Pro-Search'
+  | 'Gemini-1.5-Pro'
+  | "Gemini-1.0-Pro";
 
 export type TotalTokenUsed = {
   [model in ModelOptions]?: {
