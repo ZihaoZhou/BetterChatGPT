@@ -20,7 +20,6 @@ Respond using Markdown.`;
 // Define the model options with their corresponding providers
 export const modelProviders: { [key: string]: ModelOptions[] } = {
   'OpenAI': [
-    'GPT-4',
     'GPT-4-Turbo',
     'GPT-4-Classic',
     'GPT-4-32k',
@@ -32,11 +31,10 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'ChatGPT-16k'
   ],
   'Anthropic': [
-    'Claude-instant',
-    'Claude-3-Opus',
-    'Claude-3-Sonnet',
     'Claude-3.5-Sonnet',
-    'Claude-3.5-Sonnet-200k',
+    'Claude-3-Sonnet',
+    'Claude-3-Opus',
+    'Claude-instant',
     'Claude-3-Haiku'
   ],
   'Alibaba': [
@@ -81,7 +79,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
 
 export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
 
-export const defaultModel = 'GPT-4';
+export const defaultModel = 'GPT-4-Turbo';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],
