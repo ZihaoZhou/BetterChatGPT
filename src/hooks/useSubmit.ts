@@ -70,8 +70,40 @@ const useSubmit = () => {
     original_message: MessageInterface[]
   ): Promise<string> => {
     let data;
+    const user_message = `def build_dataset(self, data_type):
+    args = self.args
+    data_name = args.data_filename.split(".")
+    data_name[-2] += "_{}".format(data_type)
+    data_name = ".".join(data_name)
+    trajectories = sorted(
+        [eval(eachline) for eachline in open(data_name, "r").readlines()],
+        key=lambda k: len(k),
+    )
+    traj_num = len(trajectories)
+    print("{} {} trajectories loading complete.".format(traj_num, data_type))
+    # traj_sd = {idx: [traj[0], traj[-1]] for idx, traj in enumerate(trajectories)}
+
+    traj_sd = defaultdict(list)
+    for idx, traj in enumerate(trajectories):
+        traj_sd[(traj[0], traj[-1])].append(idx)
+
+    return trajectories, traj_sd, traj_num
+    How is data loaded here?`;
+
+    const assistant_message = `In this code, data is loaded and processed primarily through the DataGenerator class. Here's a breakdown of how data is loaded:`
+
     try {
-      const message = truncateMessages(original_message, 1000);
+      const example_message: MessageInterface[] = [
+        {
+          role: 'user',
+          content: `Generate a title that is no longer than 3 words for the following message:\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n\nJust say the <= 3 words summary, don't say anything else."""`,
+        },
+        {
+          role: 'assistant',
+          content: `Torch Dataset Loading`,
+        }
+      ];
+      const message = example_message.concat(truncateMessages(original_message, 4000))
       if (!apiKey || apiKey.length === 0) {
         // official endpoint
         if (apiEndpoint === officialAPIEndpoint) {
@@ -87,7 +119,7 @@ const useSubmit = () => {
       } else if (apiKey) {
         const customChatConfig: ConfigInterface = {
           ..._defaultChatConfig,
-          model: "Claude-3-Haiku",
+          model: "GPT-4o-mini",
         };
         // own apikey
         data = await getChatCompletion(
