@@ -77,17 +77,21 @@ export type ModelOptions =
   | "Solar-Mini"
   | 'Code-Llama-13b'
   | 'Code-Llama-34b'
+  | 'Llama-3-8B'
   | 'Llama-3-8B-T'
   | 'Llama-3-8b-Groq'
   | 'Llama-3.1-8B-FW-128k'
+  | 'Llama-3-70B'
   | 'Llama-3-70B-T'
   | 'Llama-3-70b-Groq'
   | 'Llama-3.1-70B-FW-128k'
+  | 'Llama-3.1-405B'
   | 'Llama-3.1-405B-T'
   | 'Llama-3.1-405B-FW-128k'
   | 'Mistral-Medium'
   | 'Mistral-Large'
   | 'Mistral-Large-2'
+  | 'Mistral-Large-2-128k'
   | 'Mixtral-8x7b-Chat'
   | 'Mixtral-8x7b-Groq'
   | 'Mixtral-8x22b-Inst-FW'
@@ -101,7 +105,11 @@ export type ModelOptions =
   | 'Gemini-1.5-Flash-Search'
   | 'Gemini-1.0-Pro-Search'
   | 'Gemini-1.5-Pro'
-  | "Gemini-1.0-Pro";
+  | "Gemini-1.0-Pro"
+  | "Gemma-2-27b-T"
+  | "Gemma-Instruct-7B-T"
+  | "Gemma-2-9b-T"
+  | "Google-PaLM";
 
 export type TotalTokenUsed = {
   [model in ModelOptions]?: {

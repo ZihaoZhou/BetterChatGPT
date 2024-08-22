@@ -20,11 +20,11 @@ Respond using Markdown.`;
 // Define the model options with their corresponding providers
 export const modelProviders: { [key: string]: ModelOptions[] } = {
   'OpenAI': [
-    'GPT-4-Turbo',
+    'GPT-4o',
     'GPT-4-Classic',
     'GPT-4-32k',
     'GPT-4-128k',
-    'GPT-4o',
+    'GPT-4-Turbo',
     'GPT-4o-mini',
     'GPT-4o-128k',
     'GPT-3.5-Turbo',
@@ -32,6 +32,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
   ],
   'Anthropic': [
     'Claude-3.5-Sonnet',
+    'Claude-3.5-Sonnet-200k',
     'Claude-3-Sonnet',
     'Claude-3-Opus',
     'Claude-instant',
@@ -44,9 +45,10 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'Qwen-1.5-110B-T'
   ],
   'Mistral': [
-    'Mistral-Medium',
     'Mistral-Large',
     'Mistral-Large-2',
+    'Mistral-Large-2-128k',
+    'Mistral-Medium',
     'Mixtral-8x7b-Chat',
     'Mixtral-8x7b-Groq',
     'Mixtral-8x22b-Inst-FW'
@@ -57,16 +59,20 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'Gemini-1.5-Pro',
     'Gemini-1.5-Pro-Search',
     'Gemini-1.0-Pro-Search',
-    'Gemini-1.0-Pro'
+    'Gemini-1.0-Pro',
+    "Gemma-2-27b-T",
+    "Gemma-Instruct-7B-T",
+    "Gemma-2-9b-T",
+    "Google-PaLM"
   ],
   'Meta': [
     'Llama-3-70b-Groq',
-    'Llama-3-70B-T',
+    'Llama-3-70B',
     'Llama-3.1-70B-FW-128k',
     'Llama-3-8b-Groq',
-    'Llama-3-8B-T',
+    'Llama-3-8B',
     'Llama-3.1-8B-FW-128k',
-    'Llama-3.1-405B-T',
+    'Llama-3.1-405B',
     'Llama-3.1-405B-FW-128k',
     'Code-Llama-13b',
     'Code-Llama-34b'
@@ -79,7 +85,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
 
 export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
 
-export const defaultModel = 'GPT-4-Turbo';
+export const defaultModel = 'GPT-4o';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],
@@ -117,7 +123,7 @@ export const modelCost = new Map<string, { prompt: { price: number, unit: number
   ['gpt-4-0125-preview', { prompt: { price: 0.01, unit: 1000 }, completion: { price: 0.03, unit: 1000 } }],
 ]);
 
-export const defaultUserMaxToken = 4000;
+export const defaultUserMaxToken = 32768;
 
 export const _defaultChatConfig: ConfigInterface = {
   model: defaultModel,
