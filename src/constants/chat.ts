@@ -28,6 +28,9 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'GPT-4o-mini',
     'GPT-4o-128k',
     'GPT-3.5-Turbo',
+    'GPT-o1',
+    'gpt-o1-prev',
+    'o1-preview-128k',
     'ChatGPT-16k'
   ],
   'Anthropic': [
