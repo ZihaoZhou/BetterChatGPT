@@ -119,7 +119,7 @@ const useSubmit = () => {
       } else if (apiKey) {
         const customChatConfig: ConfigInterface = {
           ..._defaultChatConfig,
-          model: "GPT-4o-mini",
+          model: "Claude-3.5-Haiku",
         };
         // own apikey
         data = await getChatCompletion(
@@ -273,7 +273,7 @@ const useSubmit = () => {
 
         // update tokens used for generating title
         if (countTotalTokens) {
-          const model = 'Claude-3-Haiku';
+          const model = 'Claude-3.5-Haiku';
           updateTotalTokenUsed(model, [message], {
             role: 'assistant',
             content: title,
