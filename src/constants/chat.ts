@@ -19,76 +19,50 @@ Respond using Markdown.`;
 
 // Define the model options with their corresponding providers
 export const modelProviders: { [key: string]: ModelOptions[] } = {
-  'OpenAI': [
-    'GPT-4o',
-    'GPT-4-Classic',
-    'GPT-4-32k',
-    'GPT-4-128k',
-    'GPT-4-Turbo',
-    'GPT-4o-mini',
-    'GPT-4o-128k',
-    'GPT-3.5-Turbo',
-    'GPT-o1',
-    'gpt-o1-prev',
-    'o1-preview-128k',
-    'ChatGPT-16k'
-  ],
-  'Anthropic': [
-    'Claude-3.5-Sonnet',
-    'Claude-3.5-Sonnet-200k',
-    'Claude-3-Sonnet',
-    'Claude-3-Opus',
-    'Claude-instant',
-    'Claude-3-Haiku'
-  ],
-  'Alibaba': [
-    'Qwen-72B-T',
-    'Qwen2-72B-Chat',
-    'Qwen2-72B-Instruct-T',
-    'Qwen-1.5-110B-T'
-  ],
-  'Mistral': [
-    'Mistral-Large',
-    'Mistral-Large-2',
-    'Mistral-Large-2-128k',
-    'Mistral-Medium',
-    'Mixtral-8x7b-Chat',
-    'Mixtral-8x7b-Groq',
-    'Mixtral-8x22b-Inst-FW'
-  ],
   'Google': [
+    'Gemini-2.0-Flash',
     'Gemini-1.5-Flash',
+    'Gemini-1.5-Flash-128k',
     'Gemini-1.5-Flash-Search',
     'Gemini-1.5-Pro',
-    'Gemini-1.5-Pro-Search',
-    'Gemini-1.0-Pro-Search',
-    'Gemini-1.0-Pro',
-    "Gemma-2-27b-T",
-    "Gemma-Instruct-7B-T",
-    "Gemma-2-9b-T",
-    "Google-PaLM"
+    'Gemini-1.5-Pro-128k',
+    'Gemini-1.5-Pro-Search'
+  ],
+  'OpenAI': [
+    'GPT-4o-Mini-128k',
+    'GPT-4o-Aug-128k',
+    'GPT-4o-Mini',
+    'GPT-4o-Aug'
+  ],
+  'Anthropic': [
+    'Claude-3.5-Haiku-200k',
+    'Claude-3-Sonnet-200k',
+    'Claude-3.5-Haiku',
+    'Claude-3-Sonnet'
+  ],
+  'Alibaba': [
+    'Qwen2.5-Coder-32B',
+    'Qwen2.5-72B-Instruct'
+  ],
+  'Mistral': [
+    'Mistral-Large-2',
+    'Mistral-Large-2-128k',
+    'Mixtral-8x7b-Groq'
   ],
   'Meta': [
-    'Llama-3-70b-Groq',
-    'Llama-3-70B',
-    'Llama-3.1-70B-FW-128k',
-    'Llama-3-8b-Groq',
-    'Llama-3-8B',
-    'Llama-3.1-8B-FW-128k',
-    'Llama-3.1-405B',
     'Llama-3.1-405B-FW-128k',
-    'Code-Llama-13b',
-    'Code-Llama-34b'
+    'Llama-3.2-90B-FW-131k',
+    'Llama-3-70b-Groq'
   ],
   'Others': [
-    'Solar-Mini',
+    'Solar-Pro',
     'Command-R-Plus'
   ]
 };
 
 export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
 
-export const defaultModel = 'GPT-4o';
+export const defaultModel = 'Gemini-2.0-Flash';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],
