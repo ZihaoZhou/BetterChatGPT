@@ -63,7 +63,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
 
 export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
 
-export const defaultModel = 'Gemini-2.0-Flash';
+export const defaultModel = 'Claude-3.5-Sonnet-June';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],
