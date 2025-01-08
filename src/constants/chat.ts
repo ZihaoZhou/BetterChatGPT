@@ -19,8 +19,15 @@ Respond using Markdown.`;
 
 // Define the model options with their corresponding providers
 export const modelProviders: { [key: string]: ModelOptions[] } = {
+  'Anthropic': [
+    'Claude-3.5-Sonnet-June',
+    'Claude-3.5-Sonnet-June-200k',
+    'Claude-3.5-Haiku-200k',
+    'Claude-3-Sonnet-200k',
+    'Claude-3.5-Haiku',
+    'Claude-3-Sonnet'
+  ],
   'Google': [
-    'Gemini-2.0-Flash',
     'Gemini-1.5-Flash',
     'Gemini-1.5-Flash-128k',
     'Gemini-1.5-Flash-Search',
@@ -33,12 +40,6 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'GPT-4o-Aug-128k',
     'GPT-4o-Mini',
     'GPT-4o-Aug'
-  ],
-  'Anthropic': [
-    'Claude-3.5-Haiku-200k',
-    'Claude-3-Sonnet-200k',
-    'Claude-3.5-Haiku',
-    'Claude-3-Sonnet'
   ],
   'Alibaba': [
     'Qwen2.5-Coder-32B',
