@@ -101,7 +101,7 @@ export const modelCost = new Map<string, { prompt: { price: number, unit: number
   ['gpt-4-0125-preview', { prompt: { price: 0.01, unit: 1000 }, completion: { price: 0.03, unit: 1000 } }],
 ]);
 
-export const defaultUserMaxToken = 32768;
+export const defaultUserMaxToken = 200000;
 
 export const _defaultChatConfig: ConfigInterface = {
   model: defaultModel,
