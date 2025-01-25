@@ -57,6 +57,8 @@ export type ModelOptions =
   | 'Claude-3.5-Sonnet-June'
   | 'Claude-3.5-Sonnet-June-200k'
   | 'Command-R-Plus'
+  | 'Deepseek-R1'
+  | 'Deepseek-v3-T'
   | 'GPT-4o-Aug'
   | 'GPT-4o-Aug-128k'
   | 'GPT-4o-Mini'
