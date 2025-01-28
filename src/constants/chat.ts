@@ -56,7 +56,10 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'Llama-3-70b-Groq'
   ],
   'Deepseek': [
+    'DeepSeek-R1',
+    'Real-DeepSeek-R1',
     'R1-DeepSeek',
+    'DeepSeek-R1-FW',
     'Deepseek-v3-T'
   ],
   'Others': [
