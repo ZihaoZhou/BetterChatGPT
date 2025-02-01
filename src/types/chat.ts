@@ -80,6 +80,8 @@ export type ModelOptions =
   | 'Qwen2.5-72B-Instruct'
   | 'Qwen2.5-Coder-32B'
   | 'Solar-Pro'
+  | 'o3-mini'
+  | 'o3-mini-high'
   | 'gpt-3.5-turbo'
   | 'gpt-3.5-turbo-0301'
   | 'gpt-3.5-turbo-0613'

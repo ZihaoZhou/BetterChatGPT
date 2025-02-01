@@ -36,6 +36,8 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'Gemini-1.5-Pro-Search'
   ],
   'OpenAI': [
+    'o3-mini',
+    'o3-mini-high',
     'GPT-4o-Mini-128k',
     'GPT-4o-Aug-128k',
     'GPT-4o-Mini',
