@@ -20,14 +20,16 @@ Respond using Markdown.`;
 // Define the model options with their corresponding providers
 export const modelProviders: { [key: string]: ModelOptions[] } = {
   'Anthropic': [
-    'Claude-3.5-Sonnet-June',
-    'Claude-3.5-Sonnet-June-200k',
-    'Claude-3.5-Haiku-200k',
-    'Claude-3-Sonnet-200k',
+    'Claude-3.5-Sonnet',
+    'Claude-3.5-Sonnet-200k',
     'Claude-3.5-Haiku',
-    'Claude-3-Sonnet'
+    'Claude-3.5-Haiku-200k',
+    'Claude-3-Sonnet',
+    'Claude-3-Sonnet-200k'
   ],
   'Google': [
+    'Gemini-2.0-Flash',
+    'Gemini-2.0-Flash-Lite',
     'Gemini-1.5-Flash',
     'Gemini-1.5-Flash-128k',
     'Gemini-1.5-Flash-Search',
@@ -38,12 +40,15 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
   'OpenAI': [
     'o3-mini',
     'o3-mini-high',
-    'GPT-4o-Mini-128k',
     'GPT-4o-Aug-128k',
-    'GPT-4o-Mini',
-    'GPT-4o-Aug'
+    'GPT-4o-Aug',
+    'GPT-4o-128k',
+    'GPT-4o',
+    'GPT-4o-Mini-128k',
+    'GPT-4o-Mini'
   ],
   'Alibaba': [
+    'QwQ-32B-Preview-T',
     'Qwen2.5-Coder-32B',
     'Qwen2.5-72B-Instruct'
   ],
@@ -53,6 +58,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
     'Mixtral-8x7b-Groq'
   ],
   'Meta': [
+    'Llama-3.3-70B-FW',
     'Llama-3.1-405B-FW-128k',
     'Llama-3.2-90B-FW-131k',
     'Llama-3-70b-Groq'
@@ -71,7 +77,7 @@ export const modelProviders: { [key: string]: ModelOptions[] } = {
 
 export const modelOptions: ModelOptions[] = Object.values(modelProviders).flat();
 
-export const defaultModel = 'Claude-3.5-Sonnet-June';
+export const defaultModel = 'Gemini-2.0-Flash';
 
 export const modelMaxToken = new Map<string, number>([
   ['gpt-3.5-turbo', 4096],
