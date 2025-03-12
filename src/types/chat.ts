@@ -51,11 +51,9 @@ export interface Folder {
 
 export type ModelOptions =
   | 'Claude-3-Sonnet'
-  | 'Claude-3-Sonnet-200k'
   | 'Claude-3.5-Haiku'
-  | 'Claude-3.5-Haiku-200k'
   | 'Claude-3.5-Sonnet'
-  | 'Claude-3.5-Sonnet-200k'
+  | 'Claude-3.7-Sonnet'
   | 'Command-R-Plus'
   | 'DeepSeek-R1'
   | 'DeepSeek-R1-Distill'
