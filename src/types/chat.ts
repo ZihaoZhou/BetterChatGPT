@@ -59,6 +59,7 @@ export type ModelOptions =
   | 'DeepSeek-R1'
   | 'DeepSeek-R1-Distill'
   | 'DeepSeek-R1-FW'
+  | 'DeepSeek-V3-FW'
   | 'Deepseek-v3-T'
   | 'GPT-4o'
   | 'GPT-4o-128k'
